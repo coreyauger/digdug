@@ -1,6 +1,4 @@
 
-
-
 class SimpleParser:
 	"""A Simpple Parser Class"""
 	def __init__(self, filename):
@@ -12,8 +10,7 @@ class SimpleParser:
     			for line in openfileobject:
 				x = line.replace('\n','').split(',')
 				self.total = self.total + len(x) - 1
-        			self.xs.append(x)
-				print x
+        			self.xs.append(x[1:])
 		print( "total: " + str(self.total))		
 		return self.xs	
 	def contains(self,small, big):
@@ -25,6 +22,7 @@ class SimpleParser:
 
 	def support(self, ys):
 		ss = map(lambda row: self.contains(ys,row), self.xs)
+		#ss = map(lambda row: set(ys).issubset(row), self.xs)
 		return ss.count(True)
 		
 
